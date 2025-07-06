@@ -40,6 +40,82 @@ This is more than enough to consider LaTeX for any reports writing.
 
 ## Latex Project Overall structure
 
+All LaTeX projects follow this structure
+
+1. ***Document Class Declaration:*** Here we declare the type of document we will be using. This affects the overall structure and expectations, like default formatting and features:
+
+    ```latex
+    \documentclass[a4paper]{report}
+    ```
+
+2. ***Preamble (Definitions & Setup):*** Here we import all packages we need and define the metadata for our project. This section defines logical rules, tools, and configurations we'll use in the document. It includes:
+    - Packages (capabilities you want, e.g., amsmath, graphicx)
+    - Custom commands (macros)
+    - Document metadata (title, author, date)
+
+    ```latex
+    \usepackage{graphicx}
+    \title{My Report}
+    \author{Jane Doe}
+    ```
+
+3. ***Document Body***: Everything inside `\begin{document} ... \end{document}` is where logical document components are declared. This includes different parts:
+    - **`\frontmatter`:** Used at the beginning to *set up preliminary pages* like abstract, acknowledgments, table of contents with Roman numeral numbering. This is crucial for formal reports to distinguish front matter from the main body.
+    - **`\mainmatter`:** Switches to Arabic numerals for the main body, starting from chapter 1. This ensures consistent numbering for the core content. It can be divided into several parts too, mainly:
+        - **Sectioning Hierarchy:** LaTeX structures the content using hierarchical declarations. It defines the logical structure of your document’s content. It helps organize the material into nested levels of importance. Each level gets an automatic number (unless suppressed) and appears in the Table of Contents if desired. Here are the list commands related to Sectioning depending on the document class:
+
+            | Command          | Purpose                                  | Available In Class    |
+            | ---------------- | ---------------------------------------- | --------------------- |
+            | `\part`          | Highest-level division                   | All classes           |
+            | `\chapter`       | Major division (e.g., chapters in books) | `book`, `report` only |
+            | `\section`       | Primary section within a chapter or part | All classes           |
+            | `\subsection`    | Subdivision of a section                 | All classes           |
+            | `\subsubsection` | Subdivision of a subsection              | All classes           |
+            | `\paragraph`     | Minor subdivision (inline heading)       | All classes           |
+            | `\subparagraph`  | Even finer subdivision                   | All classes           |
+
+            Here is an example:
+
+            ```latex
+            \part{Fundamentals}
+            \chapter{Introduction}
+            \section{Problem Statement}
+            \subsection{Scope}
+            \subsubsection{Limitations}
+            \paragraph{Historical Notes} This method was first...
+            \subparagraph{Footnote} Further detail appears in...
+            ```
+
+            Here is its output:
+
+            ```plaintext
+            Part I     Fundamentals
+            Chapter 1  Introduction
+            1.1        Problem Statement
+            1.1.1      Scope
+            1.1.1.1    Limitations
+                    Historical Notes. This method was first...
+                    Footnote. Further detail appears in...
+            ```
+
+            While writing text, prefer using **`\paragraph` and `\subparagraph`** sparingly as they’re inline and often better handled with text formatting or lists. Also we should use **`\clearpage`** or **`\newpage`** after chapters to control layout and add separation.
+        - **Floating Elements:** these are objects like *figures* and *tables* that are not locked to the exact position where you write them in the source code. Instead, LaTeX decides their final position based on layout rules to make your document look good and avoid awkward page breaks or spacing issues: ***They “float” to a position LaTeX deems optimal.***. They have a caption and a label. They are automatically numbered and can be included in a list of figures/tables.
+        - **Environments:** are *functional blocks* that define the behavior and formatting of specific portions of your document. An environment is a pair of commands:
+
+            ```latex
+            \begin{environment_name}
+            ... your content ...
+            \end{environment_name}
+            ```
+
+            Types of Environments will be discussed further in the commands sections.
+
+        - **Cross-referencing:** is a powerful LaTeX feature that enhances document structure, readability, and navigability, especially in long or technical documents like theses, articles, or reports. It allows you to **refer to numbered elements**. The process involves 2 steps: *Labeling* using `\label` and *Referencing* using `\ref`, `\pageref`, and `\nameref`. (The commands will be discussed further in the )
+
+4. ***d***
+5. ***d***
+6. ***d***
+
 ## Explaining Latex Document types
 
 ## Why use `report` document type
@@ -47,3 +123,5 @@ This is more than enough to consider LaTeX for any reports writing.
 ## Typical Preamble explained in details
 
 ## List of Commands that you will need 90% of the time
+
+## List of Libraries that you will need 90% of the time
