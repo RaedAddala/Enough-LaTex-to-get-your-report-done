@@ -108,13 +108,77 @@ All LaTeX projects follow this structure
             \end{environment_name}
             ```
 
+            For example:
+
+             ```latex
+            \begin{itemize}
+                \item First point
+            \end{itemize}
+            ```
+
             Types of Environments will be discussed further in the commands sections.
 
-        - **Cross-referencing:** is a powerful LaTeX feature that enhances document structure, readability, and navigability, especially in long or technical documents like theses, articles, or reports. It allows you to **refer to numbered elements**. The process involves 2 steps: *Labeling* using `\label` and *Referencing* using `\ref`, `\pageref`, and `\nameref`. (The commands will be discussed further in the )
+        - **Cross-referencing:** is a powerful LaTeX feature that enhances document structure, readability, and navigability, especially in long or technical documents like theses, articles, or reports. It allows you to **refer to numbered elements**. The process involves 2 steps: *Labeling* using `\label` and *Referencing* using `\ref`, `\pageref`, and `\nameref`.
+        - **tables**
+        - **Starred Versions, Unnumbered Headings**
 
-4. ***d***
-5. ***d***
-6. ***d***
+    - In a professional report or thesis, the **Back Matter** is the section at the very end of your document. While the `\frontmatter` and `\mainmatter` commands are technically specific to the `book` class, the **concept** of Back Matter applies to all reports. It is where you put supplemental information that would clutter the main narrative.
+
+Here is how you handle it in a `report` document:
+
+    - **Back Matter: Finishing the Document** d
+
+The back matter usually consists of three main components: Appendices, the Bibliography, and (optionally) an Index.
+
+#### **1. Appendices**
+
+The appendix is for content that is too long or detailed for the main chapters, such as raw data, large code snippets, or survey questions.
+In LaTeX, you simply use the `\appendix` command. This tells LaTeX to switch the numbering from numbers (Chapter 1, 2, 3) to letters (Appendix A, B, C).
+
+```latex
+\appendix
+\chapter{Raw Data Tables}
+\chapter{Source Code}
+
+```
+
+#### **2. Bibliography (References)**
+
+This is perhaps the most important part of the back matter. Using a package like `biblatex`, you don't have to manually type your references. You just tell LaTeX where your `.bib` file is and where to print the list.
+
+- **In the Preamble:**
+
+```latex
+\usepackage[style=authoryear]{biblatex} % Or style=numeric
+\addbibresource{references.bib}
+
+```
+
+- **In the Back Matter:**
+
+```latex
+\printbibliography[heading=bibintoc, title={References}]
+
+```
+
+*(Note: `heading=bibintoc` ensures the References section appears in your Table of Contents.)*
+
+#### **3. The Back Matter Structure**
+
+Here is how the end of your `main.tex` file should look:
+
+    ```latex
+    % --- End of Main Chapters ---
+    \appendix
+    \include{appendices/appendix_A}
+    \include{appendices/appendix_B}
+
+    \backmatter % If using book class; otherwise just use a \clearpage
+    \printbibliography[heading=bibintoc]
+
+    \end{document}
+    ```
+4. ***Special Types of Pages***
 
 ## Explaining Latex Document types
 
