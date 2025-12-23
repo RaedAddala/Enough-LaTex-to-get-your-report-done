@@ -10,6 +10,33 @@ I am trying to make it a quick guide made by a begineer for fellow begineers.
 
 ## Table of Contents
 
+1. **[What is LaTeX?](#what-is-latex)**
+    * Why it is the standard for STEM documentation.
+2. **[Why LaTeX for Reports?](#why-latex-for-reports)**
+    * Automation of numbering, references, and complex layouts.
+3. **[LaTeX Project Overall Structure](#latex-project-overall-structure)**
+    * Document Class Declaration
+    * Preamble (Definitions & Setup)
+    * Document Body
+    * Front Matter (Abstract, Acknowledgments)
+    * Main Matter (Sections, Floats, Environments)
+    * Back Matter (Appendices, Bibliography)
+    * Special Types of Pages
+4. **[Explaining LaTeX Document Types](#explaining-latex-document-types)**
+    * Comparison: Article, Report, Book, Memoir, Moderncv
+    * Choosing the `report` class
+    * Common Document Options
+5. **[Typical Preamble Explained in Detail](#typical-preamble-explained-in-details)**
+    * Page Layout & Typography
+    * Language & Encoding
+    * Mathematics, Figures, and Tables
+    * References & Hyperlinks
+6. **[List of Commands You Will Need (90% of the time)](#list-of-commands-that-you-will-need-90-of-the-time)**
+    * Sectioning, Formatting, Lists, and Math
+    * Figures, Tables, and Cross-referencing
+7. **[List of Libraries You Will Need (90% of the time)](#list-of-libraries-that-you-will-need-90-of-the-time)**
+    * Essential packages for a professional look
+
 ## What is Latex
 
 Checking Latex Official website, we find this definition:
@@ -20,9 +47,9 @@ As it is clear from this definition, LaTeX is a *document preparation system* us
 
 It is widely spread due to many factors, mainly:
 
-- It is open source.
-- It has a huge community.
-- It proved its worth and quality.
+* It is open source.
+* It has a huge community.
+* It proved its worth and quality.
 
 ## Why Latex for reports
 
@@ -49,9 +76,9 @@ All LaTeX projects follow this structure
     ```
 
 2. ***Preamble (Definitions & Setup):*** Here we import all packages we need and define the metadata for our project. This section defines logical rules, tools, and configurations we'll use in the document. It includes:
-    - Packages (capabilities you want, e.g., amsmath, graphicx)
-    - Custom commands (macros)
-    - Document metadata (title, author, date)
+    * Packages (capabilities you want, e.g., amsmath, graphicx)
+    * Custom commands (macros)
+    * Document metadata (title, author, date)
 
     ```latex
     \usepackage{graphicx}
@@ -60,9 +87,9 @@ All LaTeX projects follow this structure
     ```
 
 3. ***Document Body***: Everything inside `\begin{document} ... \end{document}` is where logical document components are declared. This includes different parts:
-    - **`\frontmatter`:** Used at the beginning to *set up preliminary pages* like abstract, acknowledgments, table of contents with Roman numeral numbering. This is crucial for formal reports to distinguish front matter from the main body.
-    - **`\mainmatter`:** Switches to Arabic numerals for the main body, starting from chapter 1. This ensures consistent numbering for the core content. It can be divided into several parts too, mainly:
-        - **Sectioning Hierarchy:** LaTeX structures the content using hierarchical declarations. It defines the logical structure of your document’s content. It helps organize the material into nested levels of importance. Each level gets an automatic number (unless suppressed) and appears in the Table of Contents if desired. Here are the list commands related to Sectioning depending on the document class:
+    * **`\frontmatter`:** Used at the beginning to *set up preliminary pages* like abstract, acknowledgments, table of contents with Roman numeral numbering. This is crucial for formal reports to distinguish front matter from the main body.
+    * **`\mainmatter`:** Switches to Arabic numerals for the main body, starting from chapter 1. This ensures consistent numbering for the core content. It can be divided into several parts too, mainly:
+        * **Sectioning Hierarchy:** LaTeX structures the content using hierarchical declarations. It defines the logical structure of your document’s content. It helps organize the material into nested levels of importance. Each level gets an automatic number (unless suppressed) and appears in the Table of Contents if desired. Here are the list commands related to Sectioning depending on the document class:
 
             | Command          | Purpose                                  | Available In Class    |
             | ---------------- | ---------------------------------------- | --------------------- |
@@ -99,8 +126,8 @@ All LaTeX projects follow this structure
             ```
 
             While writing text, prefer using **`\paragraph` and `\subparagraph`** sparingly as they’re inline and often better handled with text formatting or lists. Also we should use **`\clearpage`** or **`\newpage`** after chapters to control layout and add separation.
-        - **Floating Elements:** these are objects like *figures* and *tables* that are not locked to the exact position where you write them in the source code. Instead, LaTeX decides their final position based on layout rules to make your document look good and avoid awkward page breaks or spacing issues: ***They “float” to a position LaTeX deems optimal.***. They have a caption and a label. They are automatically numbered and can be included in a list of figures/tables.
-        - **Environments:** are *functional blocks* that define the behavior and formatting of specific portions of your document. An environment is a pair of commands:
+        * **Floating Elements:** these are objects like *figures* and *tables* that are not locked to the exact position where you write them in the source code. Instead, LaTeX decides their final position based on layout rules to make your document look good and avoid awkward page breaks or spacing issues: ***They “float” to a position LaTeX deems optimal.***. They have a caption and a label. They are automatically numbered and can be included in a list of figures/tables.
+        * **Environments:** are *functional blocks* that define the behavior and formatting of specific portions of your document. An environment is a pair of commands:
 
             ```latex
             \begin{environment_name}
@@ -118,17 +145,17 @@ All LaTeX projects follow this structure
 
             Types of Environments will be discussed further in the commands sections.
 
-        - **Cross-referencing:** is a powerful LaTeX feature that enhances document structure, readability, and navigability, especially in long or technical documents like theses, articles, or reports. It allows you to **refer to numbered elements**. The process involves 2 steps: *Labeling* using `\label` and *Referencing* using `\ref`, `\pageref`, and `\nameref`.
-        - **tables**
-        - **Starred Versions, Unnumbered Headings**
+        * **Cross-referencing:** is a powerful LaTeX feature that enhances document structure, readability, and navigability, especially in long or technical documents like theses, articles, or reports. It allows you to **refer to numbered elements**. The process involves 2 steps: *Labeling* using `\label` and *Referencing* using `\ref`, `\pageref`, and `\nameref`.
+        * **tables**
+        * **Starred Versions, Unnumbered Headings**
 
-    - In a professional report or thesis, the **Back Matter** is the section at the very end of your document. While the `\frontmatter` and `\mainmatter` commands are technically specific to the `book` class, the **concept** of Back Matter applies to all reports. It is where you put supplemental information that would clutter the main narrative.
+    * In a professional report or thesis, the **Back Matter** is the section at the very end of your document. While the `\frontmatter` and `\mainmatter` commands are technically specific to the `book` class, the **concept** of Back Matter applies to all reports. It is where you put supplemental information that would clutter the main narrative.
 
     Here is how you handle it in a `report` document:
 
-    - **Back Matter: Finishing the Document**: The back matter usually consists of three main components: Appendices, the Bibliography, and an Index:
+    * **Back Matter: Finishing the Document**: The back matter usually consists of three main components: Appendices, the Bibliography, and an Index:
 
-        - **1. Appendices:** The appendix is for content that is too long or detailed for the main chapters, such as raw data, large code snippets, or survey questions. In LaTeX, you simply use the `\appendix` command. This tells LaTeX to switch the numbering from numbers (Chapter 1, 2, 3) to letters (Appendix A, B, C).
+        * **1. Appendices:** The appendix is for content that is too long or detailed for the main chapters, such as raw data, large code snippets, or survey questions. In LaTeX, you simply use the `\appendix` command. This tells LaTeX to switch the numbering from numbers (Chapter 1, 2, 3) to letters (Appendix A, B, C).
 
             ```latex
             \appendix
@@ -136,15 +163,15 @@ All LaTeX projects follow this structure
             \chapter{Source Code}
             ```
 
-        - **2. Bibliography (References):** This is perhaps the most important part of the back matter. Using a package like `biblatex`, you don't have to manually type your references. You just tell LaTeX where your `.bib` file is and where to print the list:
-        - *In the Preamble:*
+        * **2. Bibliography (References):** This is perhaps the most important part of the back matter. Using a package like `biblatex`, you don't have to manually type your references. You just tell LaTeX where your `.bib` file is and where to print the list:
+        * *In the Preamble:*
 
             ```latex
             \usepackage[style=authoryear]{biblatex} % Or style=numeric
             \addbibresource{references.bib}
             ```
 
-        - *In the Back Matter:*
+        * *In the Back Matter:*
 
             ```latex
             \printbibliography[heading=bibintoc, title={References}]
@@ -152,7 +179,7 @@ All LaTeX projects follow this structure
 
             *(Note: `heading=bibintoc` ensures the References section appears in your Table of Contents.)*
 
-        - **3. The Back Matter Structure:** Here is how the end of your `main.tex` file should look:
+        * **3. The Back Matter Structure:** Here is how the end of your `main.tex` file should look:
 
             ```latex
             % --- End of Main Chapters ---
@@ -174,7 +201,7 @@ Unlike the `book` class, `report` does not have built-in `\frontmatter` and `\ma
 
 Common special pages include:
 
-- **Title Page**: Generated automatically with `\maketitle`. It is unnumbered and uses the `empty` page style by default.
+* **Title Page**: Generated automatically with `\maketitle`. It is unnumbered and uses the `empty` page style by default.
 
     ```latex
     \title{Your Report Title}
@@ -184,7 +211,7 @@ Common special pages include:
     \maketitle
     ```
 
-- **Abstract**: A dedicated environment that places the content on its own page (due to the default `titlepage` behavior in `report`).
+* **Abstract**: A dedicated environment that places the content on its own page (due to the default `titlepage` behavior in `report`).
 
     ```latex
     \begin{abstract}
@@ -198,7 +225,7 @@ Common special pages include:
     \addcontentsline{toc}{chapter}{Abstract}
     ```
 
-- **Acknowledgments / Dedication**: These are not built-in but commonly added as unnumbered chapters.
+* **Acknowledgments / Dedication**: These are not built-in but commonly added as unnumbered chapters.
 
     ```latex
     \chapter*{Acknowledgments} % unnumbered chapter
@@ -215,7 +242,7 @@ Common special pages include:
     \clearpage
     ```
 
-- **Table of Contents, List of Figures, List of Tables**: Automatically generated.
+* **Table of Contents, List of Figures, List of Tables**: Automatically generated.
 
     ```latex
     \tableofcontents
@@ -287,10 +314,10 @@ LaTeX provides several built-in classes, but the most common for technical and a
 
 ### Why `report` for Reports?
 
-- It allows **chapters** (`\chapter{}`), perfect for dividing a long report into logical parts.
-- Automatic **separate title page** and proper handling of abstracts.
-- Single-sided by default (good for digital or one-sided printing), but you can add `twoside` if needed.
-- No complex book features like automatic right-page chapter starts or built-in front/back matter switches, keeps things straightforward.
+* It allows **chapters** (`\chapter{}`), perfect for dividing a long report into logical parts.
+* Automatic **separate title page** and proper handling of abstracts.
+* Single-sided by default (good for digital or one-sided printing), but you can add `twoside` if needed.
+* No complex book features like automatic right-page chapter starts or built-in front/back matter switches, keeps things straightforward.
 
 Example for a typical report:
 
@@ -384,16 +411,16 @@ Here is a realistic, beginner-friendly preamble for a typical report, followed b
 
 ### Key Sections Explained
 
-- **Page Layout**: `geometry` gives you full control over margins. 1-inch margins are standard for many institutions.
-- **Typography Improvements**:
-  - `parskip`: Adds space between paragraphs and removes first-line indentation—gives a cleaner, modern look (common in reports and theses).
-  - `microtype`: Subtly improves text justification, hyphenation, and character spacing. It makes your document look more professional without any extra effort.
-- **Line Spacing**: Many universities require 1.5 or double spacing—`setspace` handles this easily.
-- **Mathematics**: `amsmath` is essential for aligned equations, cases, etc. `amssymb` adds symbols like `\mathbb`, `\mathcal`.
-- **Figures & Tables**: `graphicx` for images, `booktabs` for clean tables, `subcaption` for side-by-side figures, `array` for advanced column formatting in tables.
-- **Bibliography**: `biblatex` + a `.bib` file is the modern, powerful way to manage references.
-- **Hyperlinks**: `hyperref` makes your PDF interactive (clickable TOC, references, URLs). Load it near the end (except for `cleveref`, which should come after).
-- **Metadata**: Always define `\title`, `\author`, and `\date` before `\maketitle`.
+* **Page Layout**: `geometry` gives you full control over margins. 1-inch margins are standard for many institutions.
+* **Typography Improvements**:
+  * `parskip`: Adds space between paragraphs and removes first-line indentation—gives a cleaner, modern look (common in reports and theses).
+  * `microtype`: Subtly improves text justification, hyphenation, and character spacing. It makes your document look more professional without any extra effort.
+* **Line Spacing**: Many universities require 1.5 or double spacing—`setspace` handles this easily.
+* **Mathematics**: `amsmath` is essential for aligned equations, cases, etc. `amssymb` adds symbols like `\mathbb`, `\mathcal`.
+* **Figures & Tables**: `graphicx` for images, `booktabs` for clean tables, `subcaption` for side-by-side figures, `array` for advanced column formatting in tables.
+* **Bibliography**: `biblatex` + a `.bib` file is the modern, powerful way to manage references.
+* **Hyperlinks**: `hyperref` makes your PDF interactive (clickable TOC, references, URLs). Load it near the end (except for `cleveref`, which should come after).
+* **Metadata**: Always define `\title`, `\author`, and `\date` before `\maketitle`.
 
 **Tip**: Comment your preamble generously (using `%`) so you remember why each package is there. You can remove unused packages later to keep the document clean.
 
